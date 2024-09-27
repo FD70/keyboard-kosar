@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://c21kieh3ivfg5"]
+
+[ext_resource type="Texture2D" uid="uid://duv5k7ujltnny" path="res://assets/sprites/checkers.jpg" id="1_001nv"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_mmx71"]
+[ext_resource type="Texture2D" uid="uid://d2pe66abl0jst" path="res://icon.svg" id="3_dbmhk"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="4_vyyay"]
+[ext_resource type="Shader" path="res://shaders/ground.gdshader" id="5_3d2v5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hi7qi"]
+shader = ExtResource("5_3d2v5")
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/speed_scale = 0.05
+shader_parameter/SPRITE = ExtResource("3_dbmhk")
+
+[node name="Main" type="CanvasLayer"]
+script = ExtResource("1_mmx71")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = -70
+theme_override_constants/margin_top = -40
+theme_override_constants/margin_right = -70
+theme_override_constants/margin_bottom = -40
+
+[node name="Checkers" type="Sprite2D" parent="MarginContainer"]
+visible = false
+position = Vector2(642, 360)
+scale = Vector2(1.10445, 0.708777)
+texture = ExtResource("1_001nv")
+region_rect = Rect2(1083, 547.5, 181, 187)
+
+[node name="OVERFLOW" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Player" type="Sprite2D" parent="MarginContainer/OVERFLOW"]
+unique_name_in_owner = true
+position = Vector2(633, 406)
+texture = ExtResource("3_dbmhk")
+script = ExtResource("4_vyyay")
+
+[node name="text_line" type="Control" parent="MarginContainer/OVERFLOW"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 700.0
+offset_top = -25.0
+offset_right = 700.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/OVERFLOW/text_line"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 0.0235294, 0.180392)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/OVERFLOW/text_line"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ground" type="Control" parent="MarginContainer/OVERFLOW"]
+material = SubResource("ShaderMaterial_hi7qi")
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -36.0
+offset_bottom = 364.0
+grow_horizontal = 2
+grow_vertical = 2

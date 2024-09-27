@@ -1,0 +1,597 @@
+[gd_scene load_steps=34 format=3 uid="uid://c21kieh3ivfg5"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_mmx71"]
+[ext_resource type="Texture2D" uid="uid://cvel0p1ybdwyt" path="res://assets/sprites/cloud1.png" id="3_6wg08"]
+[ext_resource type="Texture2D" uid="uid://ppsmjqqh4x7r" path="res://assets/sprites/ground_s_travoy.png" id="4_3ikx3"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="4_vyyay"]
+[ext_resource type="Shader" path="res://shaders/ground.gdshader" id="5_3d2v5"]
+[ext_resource type="Texture2D" uid="uid://bk3euy82ylaxe" path="res://assets/sprites/_kosar.png" id="5_tkjps"]
+[ext_resource type="Texture2D" uid="uid://cusggjm43kh8h" path="res://assets/sprites/trava_front_flip_H.png" id="7_n8tbp"]
+[ext_resource type="Texture2D" uid="uid://hi3co08yovp5" path="res://assets/sprites/trava_black.png" id="7_pv12o"]
+[ext_resource type="Texture2D" uid="uid://ds4aco444upsc" path="res://assets/sprites/travinka.png" id="8_rf30t"]
+[ext_resource type="Shader" path="res://shaders/rain.gdshader" id="10_mv6ag"]
+[ext_resource type="Script" path="res://scripts/game_timer.gd" id="12_ktp5o"]
+[ext_resource type="Shader" path="res://shaders/god_rays.gdshader" id="14_6nwou"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3sh6k"]
+shader = ExtResource("5_3d2v5")
+shader_parameter/texture_shift = 0.0
+shader_parameter/gs_modulate = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ttlxs"]
+shader = ExtResource("5_3d2v5")
+shader_parameter/texture_shift = 0.0
+shader_parameter/gs_modulate = Color(0, 0, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_378b2"]
+atlas = ExtResource("5_tkjps")
+region = Rect2(1440, 0, 180, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tt5q"]
+atlas = ExtResource("5_tkjps")
+region = Rect2(1620, 0, 180, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpl5c"]
+atlas = ExtResource("5_tkjps")
+region = Rect2(1080, 0, 180, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cld8f"]
+atlas = ExtResource("5_tkjps")
+region = Rect2(720, 0, 180, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtlhb"]
+atlas = ExtResource("5_tkjps")
+region = Rect2(360, 0, 180, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bn3ii"]
+atlas = ExtResource("5_tkjps")
+region = Rect2(0, 0, 180, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3oq8s"]
+atlas = ExtResource("5_tkjps")
+region = Rect2(1260, 0, 180, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8q8y"]
+atlas = ExtResource("5_tkjps")
+region = Rect2(900, 0, 180, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6ait"]
+atlas = ExtResource("5_tkjps")
+region = Rect2(540, 0, 180, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6iq2f"]
+atlas = ExtResource("5_tkjps")
+region = Rect2(180, 0, 180, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ex7w4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_378b2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tt5q")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpl5c")
+}],
+"loop": false,
+"name": &"k1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cld8f")
+}],
+"loop": false,
+"name": &"k2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtlhb")
+}],
+"loop": false,
+"name": &"k3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bn3ii")
+}],
+"loop": false,
+"name": &"k4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3oq8s")
+}],
+"loop": false,
+"name": &"sw1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8q8y")
+}],
+"loop": false,
+"name": &"sw2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6ait")
+}],
+"loop": false,
+"name": &"sw3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6iq2f")
+}],
+"loop": false,
+"name": &"sw4",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ftg2"]
+shader = ExtResource("5_3d2v5")
+shader_parameter/texture_shift = 0.0
+shader_parameter/gs_modulate = Color(0, 0, 0.164706, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ao7ku"]
+shader = ExtResource("14_6nwou")
+shader_parameter/angle = 0.5
+shader_parameter/position = 0.3
+shader_parameter/spread = 0.7
+shader_parameter/cutoff = 0.1
+shader_parameter/falloff = 0.7
+shader_parameter/edge_fade = 0.15
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 8.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.3
+shader_parameter/color = Color(0.67, 1, 0.7525, 0.392157)
+shader_parameter/hdr = false
+shader_parameter/seed = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vpmi3"]
+shader = ExtResource("5_3d2v5")
+shader_parameter/texture_shift = 0.0
+shader_parameter/gs_modulate = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ppucf"]
+shader = ExtResource("10_mv6ag")
+shader_parameter/count = 420
+shader_parameter/slant = 0.015
+shader_parameter/speed = 50.0
+shader_parameter/blur = 0.002
+shader_parameter/colour = Color(1, 1, 1, 1)
+shader_parameter/size = Vector2(0.005, 0.2)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xkli0"]
+blend_mode = 2
+
+[sub_resource type="Animation" id="Animation_fax1i"]
+resource_name = "RESET"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/OVERFLOW/Control/PP_rays:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../MarginContainer/OVERFLOW/Control/PP_rays:material:shader_parameter/seed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../MarginContainer/OVERFLOW/Control/PP_rays:material:shader_parameter/color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.67, 1, 0.7525, 0.392157)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%text_line:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../MarginContainer/OVERFLOW/Control/rain_box:material:shader_parameter/count")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [420]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../MarginContainer/OVERFLOW/Control/sky:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.28, 0.24, 0.545, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yde17"]
+resource_name = "before_start"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/OVERFLOW/Control/PP_rays:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../MarginContainer/OVERFLOW/Control/PP_rays:material:shader_parameter/seed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [5.0, 8.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../MarginContainer/OVERFLOW/Control/PP_rays:material:shader_parameter/color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.67, 1, 0.7525, 0), Color(0.67, 1, 0.7525, 0.27451), Color(0.67, 1, 0.7525, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%text_line:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../MarginContainer/OVERFLOW/Control/rain_box:material:shader_parameter/count")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.36, 1),
+"update": 0,
+"values": [420, 0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../MarginContainer/OVERFLOW/Control/sky:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.28, 0.24, 0.545, 1), Color(0.3906, 0.4704, 0.63, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oxnnk"]
+_data = {
+"RESET": SubResource("Animation_fax1i"),
+"before_start": SubResource("Animation_yde17")
+}
+
+[node name="Main" type="CanvasLayer"]
+script = ExtResource("1_mmx71")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = -70
+theme_override_constants/margin_top = -40
+theme_override_constants/margin_right = -70
+theme_override_constants/margin_bottom = -40
+
+[node name="OVERFLOW" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/OVERFLOW"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="sky" type="ColorRect" parent="MarginContainer/OVERFLOW/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.28, 0.24, 0.545, 1)
+
+[node name="cloud1" type="TextureRect" parent="MarginContainer/OVERFLOW/Control"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_3sh6k")
+custom_minimum_size = Vector2(1500, 426)
+layout_mode = 1
+offset_left = -8.0
+offset_top = 29.0
+offset_right = 1592.0
+offset_bottom = 455.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("3_6wg08")
+
+[node name="ground_road" type="TextureRect" parent="MarginContainer/OVERFLOW/Control"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ttlxs")
+custom_minimum_size = Vector2(0, 426)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 38.0
+offset_top = -102.0
+offset_right = 126.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4_3ikx3")
+
+[node name="Player" type="AnimatedSprite2D" parent="MarginContainer/OVERFLOW/Control"]
+unique_name_in_owner = true
+position = Vector2(630, 410)
+sprite_frames = SubResource("SpriteFrames_ex7w4")
+animation = &"k4"
+autoplay = "idle"
+script = ExtResource("4_vyyay")
+
+[node name="crop_line" type="HBoxContainer" parent="MarginContainer/OVERFLOW/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 711.0
+offset_top = 499.0
+offset_right = 771.0
+offset_bottom = 539.0
+theme_override_constants/separation = 30
+
+[node name="crop_unit" type="Control" parent="MarginContainer/OVERFLOW/Control/crop_line"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/OVERFLOW/Control/crop_line/crop_unit"]
+texture = ExtResource("8_rf30t")
+
+[node name="Control2" type="Control" parent="MarginContainer/OVERFLOW/Control/crop_line"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/OVERFLOW/Control/crop_line/Control2"]
+texture = ExtResource("8_rf30t")
+
+[node name="Control3" type="Control" parent="MarginContainer/OVERFLOW/Control/crop_line"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/OVERFLOW/Control/crop_line/Control3"]
+texture = ExtResource("8_rf30t")
+
+[node name="ground2" type="TextureRect" parent="MarginContainer/OVERFLOW/Control"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_4ftg2")
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 38.0
+offset_top = 44.0
+offset_right = 126.0
+offset_bottom = 444.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_n8tbp")
+
+[node name="PP_rays" type="ColorRect" parent="MarginContainer/OVERFLOW/Control"]
+visible = false
+material = SubResource("ShaderMaterial_ao7ku")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 70.0
+offset_top = 40.0
+offset_right = 70.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ground" type="TextureRect" parent="MarginContainer/OVERFLOW/Control"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_vpmi3")
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 172.0
+offset_right = 88.0
+offset_bottom = 572.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_pv12o")
+
+[node name="rain_box" type="ColorRect" parent="MarginContainer/OVERFLOW/Control"]
+material = SubResource("ShaderMaterial_ppucf")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="text_line" type="Control" parent="MarginContainer/OVERFLOW"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 700.0
+offset_top = -40.0
+offset_right = 700.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/OVERFLOW/text_line"]
+material = SubResource("CanvasItemMaterial_xkli0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 0.0166667, 0.27451)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/OVERFLOW/text_line"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UI" type="MarginContainer" parent="MarginContainer/OVERFLOW"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/OVERFLOW/UI"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="result_frame" type="Label" parent="MarginContainer/OVERFLOW/UI/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/OVERFLOW/UI/VBoxContainer/result_frame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.00352086
+size_flags_vertical = 4
+color = Color(0, 0, 0, 0.470588)
+
+[node name="result_label" type="Label" parent="MarginContainer/OVERFLOW/UI/VBoxContainer/result_frame/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Крутой рузельтат: 228"
+horizontal_alignment = 1
+
+[node name="play_button" type="Button" parent="MarginContainer/OVERFLOW/UI/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "НАЧАТЬ КОСИТЬ"
+
+[node name="timers" type="Node" parent="."]
+
+[node name="Game_timer" type="Timer" parent="timers"]
+unique_name_in_owner = true
+wait_time = 1000.0
+one_shot = true
+script = ExtResource("12_ktp5o")
+
+[node name="animation" type="Node" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="animation"]
+libraries = {
+"": SubResource("AnimationLibrary_oxnnk")
+}
+
+[connection signal="pressed" from="MarginContainer/OVERFLOW/UI/VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
